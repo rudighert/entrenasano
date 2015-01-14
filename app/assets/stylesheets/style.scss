@@ -1,0 +1,31 @@
+@import "compass";
+
+body{
+  background-color: #ecf0f1;
+}
+
+h1{
+  font-size: 25px;
+}
+
+button{
+  @include border-radius(5px);
+}
+
+.block_button{
+  text-align: center;
+}
+
+.logo{
+  background-color: white;
+  text-align: center;
+  img{
+    max-width: 200px;
+  }
+}
+
+#welcome{
+  .go_login{
+    width: 100%;
+  }
+}
