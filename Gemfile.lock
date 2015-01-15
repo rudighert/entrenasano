@@ -129,6 +129,8 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+    sextant (0.2.4)
+      rails (>= 3.2)
     simple_form (2.1.2)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
@@ -157,6 +159,7 @@ DEPENDENCIES
   awesome_print
   bson_ext (= 1.8.0)
   compass-rails
+  devise
   foundation-rails
   haml
   jquery-rails
@@ -168,5 +171,6 @@ DEPENDENCIES
   quiet_assets
   rails (= 3.2.11)
   sass-rails (~> 3.2.3)
+  sextant
   simple_form
   uglifier (>= 1.0.3)

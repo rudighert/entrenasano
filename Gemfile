@@ -14,6 +14,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :development do
+  gem "sextant"
+end
+
 # Basics
 gem 'jquery-rails'
 gem 'foundation-rails'
@@ -25,4 +29,5 @@ gem 'simple_form'
 
 
 #devise mongo
+gem 'devise'
 gem 'mm-devise'
