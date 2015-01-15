@@ -8,8 +8,16 @@ h1{
   font-size: 25px;
 }
 
-button{
+button, input[type="submit"]{
   @include border-radius(5px);
+  &.green{
+    color: white;
+    background-color: #27ae60;
+  }
+}
+
+.total{
+  width: 100%;
 }
 
 .block_button{
@@ -27,5 +35,13 @@ button{
 #welcome{
   .go_login{
     width: 100%;
+  }
+}
+
+#my_pupils{
+  background-color: white;
+  padding: 20px;
+  .pupil_name{
+    text-transform: capitalize;
   }
 }

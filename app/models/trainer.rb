@@ -5,8 +5,7 @@ class Trainer
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+
 
   # ///// Devise Vars
   key :email, :null => false, :default => ""
@@ -22,5 +21,25 @@ class Trainer
   key :locked_at
   key :remember_created_at
   # ///// End Devise Vars
+
+  key :name, required: true
+  key :last_name, required: true
+
+  many :pupils
+
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :last_name
+
+  def get_name
+    "#{name} #{last_name}"
+  end
+
+  def get_pupils
+    self.pupils
+  end
+
+  def add_pupil params
+    pupil = Pupil.create params
+    self.pupils << pupil
+  end
 
 end

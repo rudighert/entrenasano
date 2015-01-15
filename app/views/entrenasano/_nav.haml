@@ -2,23 +2,23 @@
   %ul.title-area
     %li.name
       %h1
-        %a{href: root_path} Portal Entrenasano
+        %a{href: root_path}
+          -if trainer_logged_in?
+            =current_trainer.get_name
+          -else
+            Portal Entrenasano
 
-  /   %li.toggle-topbar.menu-icon
-  /     %a{:href => "#"}
-  /       %span Menu
-  / %section.top-bar-section
-  /   %ul.right
-  /     %li.active
-  /       %a{:href => "#"} Right Button Active
-  /     %li.has-dropdown
-  /       %a{:href => "#"} Right Button Dropdown
-  /       %ul.dropdown
-  /         %li
-  /           %a{:href => "#"} First link in dropdown
-  /         %li.active
-  /           %a{:href => "#"} Active link in dropdown
+    %li.toggle-topbar.menu-icon
+      %a{:href => "#"}
+        %span Menu
+  %section.top-bar-section
+    -if trainer_logged_in?
+      / %ul.left
+      /   %li
+      /     %a{:href => "#"} Left Nav Button
 
-  /   %ul.left
-  /     %li
-  /       %a{:href => "#"} Left Nav Button
+
+
+      %ul.right
+        %li
+          =link_to('Salir', destroy_trainer_session_path, :method => :delete)

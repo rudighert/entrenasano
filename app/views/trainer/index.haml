@@ -1,0 +1,56 @@
+%h1 Mis Alumnos
+
+#my_pupils
+  -pupils = current_trainer.get_pupils
+  -if pupils.empty?
+    %h1 No se encuentran alumnos vigentes
+  -else
+
+    .row
+      .small-12
+        %table
+          %thead
+            %tr
+              %th{:width => "30%"} Nombre Alumno
+              %th{:width => "40%"} Objetivos
+              %th{:width => "30%"} Acciones
+          %tbody
+            -pupils.each do |p|
+              %tr
+                %td.pupil_name=p.get_name
+                %td This is longer content Donec id elit non mi porta gravida at eget metus.
+                %td
+                  %a.add_hour_pupil{data: {"reveal-id" => "add_hour", pupil: p.id}, :href => "#"}
+                    Agregar Hora
+
+
+
+  %a{"data-reveal-id" => "new_pupil", :href => "#"}
+    %button Agregar Alumno
+
+
+#new_pupil.reveal-modal{"data-reveal" => ""}
+  %h2 Agregar Alumno
+  = simple_form_for @pupil, :url => add_pupil_trainer_index_path do |f|
+    = f.input :name
+    = f.input :last_name
+    = f.input :rut
+    = f.input :email
+    = f.button :submit
+
+#add_hour.reveal-modal{"data-reveal" => ""}
+  %h2 Agregar hora
+  = simple_form_for @pupil_hour, :url => add_pupil_trainer_index_path do |f|
+    =hidden_field_tag "pupil_id", ''
+    %input#datepicker{type: "text"}
+
+
+:javascript
+  $(document).ready(function(){
+    $( "#datepicker" ).datepicker();
+
+    $('body').on('click', '.add_hour_pupil',function(){
+      var pupil = $(this).data('pupil')
+      alert(pupil)
+    })
+  })
