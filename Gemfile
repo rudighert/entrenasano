@@ -19,8 +19,7 @@ group :development do
 end
 
 # Basics
-gem 'jquery-rails'
-gem 'jquery-ui-rails'
+gem 'jquery-rails', '~> 2.3.0'
 gem 'foundation-rails'
 gem 'haml'
 gem 'compass-rails'
