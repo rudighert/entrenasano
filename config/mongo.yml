@@ -1,5 +1,5 @@
 production:
-  uri: "mongodb://localhost/entrenasano"
+  uri: "<%= ENV['MONGOHQ_URL'] %>"
 
 development:
   uri: "mongodb://localhost/entrenasano"
