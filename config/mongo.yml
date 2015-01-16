@@ -1,2 +1,5 @@
+production:
+  uri: "mongodb://localhost/entrenasano"
+
 development:
   uri: "mongodb://localhost/entrenasano"
