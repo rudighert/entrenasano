@@ -1,0 +1,1 @@
+MONGO = uri = ENV['MONGOHQ_URL'] || YAML::load(File.open("#{Rails.root}/config/mongo.yml"))[Rails.env]['uri']
