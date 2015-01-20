@@ -1,5 +1,5 @@
 production:
-  uri: "mongodb://rudighert:rudighert@candidate.33.mongolayer.com:10512,candidate.0.mongolayer.com:10721/app33280626"
+  uri: "mongodb://rudighert:rudighert@candidate.33.mongolayer.com:10512/app33280626"
 
 development:
   uri: "mongodb://localhost/entrenasano"
