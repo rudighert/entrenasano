@@ -36,18 +36,24 @@
     = f.input :last_name
     = f.input :rut
     = f.input :email
+    = f.input :birthday, input_html: { class: 'datepicker' }
     = f.button :submit
 
 #add_hour.reveal-modal{"data-reveal" => ""}
   %h2 Agregar hora
   = simple_form_for @pupil_hour, :url => add_pupil_trainer_index_path do |f|
     =hidden_field_tag "pupil_id", ''
-    %input#datepicker{type: "text"}
+    %input.datepicker{type: "text"}
 
 
 :javascript
   $(document).ready(function(){
-    $( "#datepicker" ).datepicker();
+    $( ".datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+
+    });
+
 
     $('body').on('click', '.add_hour_pupil',function(){
       var pupil = $(this).data('pupil')
