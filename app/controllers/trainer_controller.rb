@@ -16,7 +16,6 @@ class TrainerController < ApplicationController
   end
 
   def add_hour_in_pupil
-    ap params
     redirect_to trainer_index_path
   end
 
