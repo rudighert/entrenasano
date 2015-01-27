@@ -44,16 +44,22 @@
   = simple_form_for @pupil_hour, :url => add_pupil_trainer_index_path do |f|
     =hidden_field_tag "pupil_id", ''
     %input.datepicker{type: "text"}
+    -hours =create_hours(:start_time => 5.hours, :end_time => 23.hours)
+    %select=options_for_select hours, DateTime.now.strftime("%I:00 %p")
+
 
 
 :javascript
+  var today = "#{@today}";
+
   $(document).ready(function(){
     $( ".datepicker" ).datepicker({
       changeMonth: true,
       changeYear: true,
       yearRange: "-100:+0"
-
     });
+
+    $( ".datepicker" ).datepicker( "setDate" , today );
 
 
     $('body').on('click', '.add_hour_pupil',function(){

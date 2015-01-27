@@ -2,6 +2,7 @@ class TrainerController < ApplicationController
   def index
     @pupil=Pupil.new
     @pupil_hour=PupilHour.new
+    @today =  Date.today.strftime("%m/%d/%Y")
   end
 
   def show

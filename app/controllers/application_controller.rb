@@ -6,4 +6,6 @@ class ApplicationController < ActionController::Base
   def trainer_logged_in?
     !current_trainer.nil?
   end
+
+
 end
