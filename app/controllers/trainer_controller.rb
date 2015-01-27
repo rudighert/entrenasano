@@ -10,7 +10,9 @@ class TrainerController < ApplicationController
 
   def add_pupil
     date = params[:pupil][:birthday].split('/')
+    ap date
     params[:pupil][:birthday] = Time.new(date[2],date[1],date[0]).utc
+    ap params
     current_trainer.add_pupil params[:pupil]
     redirect_to trainer_index_path
   end
