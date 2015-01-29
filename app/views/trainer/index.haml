@@ -1,9 +1,7 @@
-%h1 Mis Alumnos
-
-#my_pupils
-  -pupils = current_trainer.get_pupils
-  -if pupils.empty?
-    %h1 No se encuentran alumnos vigentes
+#wrapper
+  -classes = current_trainer.get_classes
+  -if classes.empty?
+    %h1 No ha ingresado ningúna clase
   -else
 
     .row
@@ -11,11 +9,11 @@
         %table
           %thead
             %tr
-              %th{:width => "30%"} Nombre Alumno
+              %th{:width => "30%"} Clases
               %th{:width => "40%"} Objetivos
               %th{:width => "30%"} Acciones
           %tbody
-            -pupils.each do |p|
+            -classes.each do |p|
               %tr
                 %td.pupil_name=p.get_name
                 %td This is longer content Donec id elit non mi porta gravida at eget metus.
@@ -24,20 +22,18 @@
                     Agregar Hora
 
 
+  %ul#myTags
+    %li Tag1
+    %li Tag2
+  %a{"data-reveal-id" => "add_class", :href => "#"}
+    %button.total Agregar Clase
 
-  %a{"data-reveal-id" => "new_pupil", :href => "#"}
-    %button Agregar Alumno
 
 
-#new_pupil.reveal-modal{"data-reveal" => ""}
-  %h2 Agregar Alumno
-  = simple_form_for @pupil, :url => add_pupil_trainer_index_path do |f|
-    = f.input :name
-    = f.input :last_name
-    = f.input :rut
-    = f.input :email
-    = f.input :birthday, input_html: { class: 'datepicker' }
-    = f.button :submit
+
+
+
+
 
 #add_hour.reveal-modal{"data-reveal" => ""}
   %h2 Agregar hora
@@ -46,6 +42,16 @@
     %input.datepicker{type: "text"}
     -hours =create_hours(:start_time => 5.hours, :end_time => 23.hours)
     %select=options_for_select hours, DateTime.now.strftime("%I:00 %p")
+  %a{class: "close-reveal-modal"}="&#215;".html_safe
+
+#add_class.reveal-modal{"data-reveal" => ""}
+  %h2 Agregar Clase
+  = simple_form_for @pupil_hour, :url => add_pupil_trainer_index_path do |f|
+    =hidden_field_tag "pupil_id", ''
+    %input.datepicker{type: "text"}
+    -hours =create_hours(:start_time => 5.hours, :end_time => 23.hours)
+    %select=options_for_select hours, DateTime.now.strftime("%I:00 %p")
+  %a{class: "close-reveal-modal"}="&#215;".html_safe
 
 
 
@@ -53,16 +59,10 @@
   var today = "#{@today}";
 
   $(document).ready(function(){
-    $( ".datepicker" ).datepicker({
-      changeMonth: true,
-      changeYear: true,
-      yearRange: "-100:+0"
-    });
-
-    $( ".datepicker" ).datepicker( "setDate" , today );
-
-
     $('body').on('click', '.add_hour_pupil',function(){
       var pupil = $(this).data('pupil')
     })
+    $("#myTags").tagit({
+      availableTags: #{@aviable_pupils}
+    });
   })

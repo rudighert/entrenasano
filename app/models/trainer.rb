@@ -25,7 +25,7 @@ class Trainer
   key :name, required: true
   key :last_name, required: true
 
-  many :pupils
+  many :training_classes
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :last_name
 
@@ -33,13 +33,10 @@ class Trainer
     "#{name} #{last_name}"
   end
 
-  def get_pupils
-    self.pupils
+  def get_classes
+    self.training_classes
   end
 
-  def add_pupil params
-    pupil = Pupil.create params
-    self.pupils << pupil
-  end
+
 
 end

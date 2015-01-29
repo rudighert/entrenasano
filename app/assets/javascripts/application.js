@@ -14,6 +14,17 @@
 //= require jquery_ujs
 //= require jquery-ui.min
 //= require foundation
+//= require tag-it.min
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
+
+$(document).ready(function(){
+    $( ".datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "-100:+0"
+    });
+
+    $( ".datepicker" ).datepicker( "setDate" , today );
+});

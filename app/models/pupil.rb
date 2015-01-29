@@ -5,9 +5,9 @@ class Pupil
   key :rut,       required: true, unique: true
   key :name,      required: true
   key :last_name, required: true
-  key :birthday,  Time
+  key :notes
+  key :birthday,  Date
 
-  belongs_to :trainer
 
   timestamps!
 

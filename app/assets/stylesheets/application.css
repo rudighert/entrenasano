@@ -11,5 +11,7 @@
  *= require_self
  *= require foundation_and_overrides
  *= require jquery-ui.min
+ *= require jquery.tagit
+ *= require tagit.ui-zendesk
  *= require_tree .
  */

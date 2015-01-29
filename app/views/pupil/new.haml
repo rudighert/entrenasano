@@ -1,0 +1,10 @@
+#wrapper
+  %h2 Agregar Alumno
+  = simple_form_for @pupil, :url => pupil_index_path do |f|
+    = f.input :name
+    = f.input :last_name
+    = f.input :rut, :input_html => { :type => "number" }
+    = f.input :email
+    = f.input :birthday, input_html: { class: 'datepicker' }
+    = f.input :notes, as: :text
+    = f.button :submit, class: 'total'

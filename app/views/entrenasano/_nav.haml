@@ -13,9 +13,11 @@
         %span Menu
   %section.top-bar-section
     -if trainer_logged_in?
-      / %ul.left
-      /   %li
-      /     %a{:href => "#"} Left Nav Button
+      %ul.left
+        %li
+          %a{:href => root_path} Inicio
+        %li
+          %a{:href => new_pupil_path} Agregar Alumno
 
 
 

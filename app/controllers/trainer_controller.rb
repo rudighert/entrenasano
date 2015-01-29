@@ -3,6 +3,7 @@ class TrainerController < ApplicationController
     @pupil=Pupil.new
     @pupil_hour=PupilHour.new
     @today =  Date.today.strftime("%m/%d/%Y")
+    @aviable_pupils = get_aviable_pupils
   end
 
   def show
@@ -10,16 +11,15 @@ class TrainerController < ApplicationController
   end
 
   def add_pupil
-    date = params[:pupil][:birthday].split('/')
-    ap date
-    params[:pupil][:birthday] = DateTime.new(date[2].to_i,date[0].to_i,date[1].to_i).utc
-    ap params
-    current_trainer.add_pupil params[:pupil]
-    redirect_to trainer_index_path
+
   end
 
   def add_hour_in_pupil
     redirect_to trainer_index_path
+  end
+
+  def get_aviable_pupils
+    Pupil.all.collect{|p| p.get_name}
   end
 
 end
