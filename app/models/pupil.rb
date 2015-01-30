@@ -9,6 +9,7 @@ class Pupil
   key :birthday,  Date
 
 
+
   timestamps!
 
   def get_name

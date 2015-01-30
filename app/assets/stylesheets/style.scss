@@ -18,6 +18,7 @@ button, input[type="submit"]{
 
 .total{
   width: 100%;
+  max-width: 100%;
 }
 
 .block_button{
@@ -44,4 +45,7 @@ button, input[type="submit"]{
   .pupil_name{
     text-transform: capitalize;
   }
+}
+.pupil_name{
+  text-transform: capitalize;
 }

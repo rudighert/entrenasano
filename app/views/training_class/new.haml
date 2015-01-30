@@ -1,0 +1,26 @@
+#wrapper
+  %h1 Agregar Clase
+  = simple_form_for @trainig_class, :url => training_class_path do |f|
+    -hours =create_hours(start_time: 5.hours, end_time: 23.hours, increment: 15.minutes)
+    =f.input :init_hour, collection: hours, selected: time_now
+    =f.input :finish_hour, collection: hours, selected: time_now
+    %label Días de la semana
+    %input#days_week{name: "[training_class][days]"}
+    .row.total
+      -Pupil.all.each do |p|
+        .small-6.columns
+          %input{type: "checkbox", name:"[training_class][pupils][]", value: p.id }
+            %span.pupil_name=p.get_name
+
+    = f.button :submit, class: 'total'
+
+
+
+:javascript
+
+  $(document).ready(function(){
+    $("#days_week").tagit({
+      availableTags: ["Lunes","Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
+    });
+
+  })

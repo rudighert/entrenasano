@@ -10,16 +10,17 @@ class TrainerController < ApplicationController
 
   end
 
-  def add_pupil
 
-  end
 
-  def add_hour_in_pupil
+  def add_hour_in_class
+    date = params[:pupil_hour][:date_class].split('/')
+    params[:pupil_hour][:date_class] = Time.new(date[2].to_i,date[0].to_i,date[1].to_i).utc
+    pupil_hour = PupilHour.new params[:pupil_hour]
+    training_class = TrainingClass.find params[:pupil_hour][:training_class_id]
+    training_class.add_pupil_hour pupil_hour
     redirect_to trainer_index_path
   end
 
-  def get_aviable_pupils
-    Pupil.all.collect{|p| p.get_name}
-  end
+
 
 end

@@ -7,4 +7,14 @@ module ApplicationHelper
       (Time.now.midnight + (i*increment) + start_time).strftime("%I:%M %p")
     end
   end
+
+
+  def time_now parameters={}
+    parameters[:increment] = parameters[:increment].nil? ? 15 : parameters[:increment]
+    hour= DateTime.now.strftime("%I")
+    minute= DateTime.now.strftime("%M")
+    minute = (minute.to_i/parameters[:increment])*parameters[:increment]
+    pref = DateTime.now.strftime("%p")
+    time = "#{hour}:#{minute} #{pref}"
+  end
 end

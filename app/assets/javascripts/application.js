@@ -25,6 +25,4 @@ $(document).ready(function(){
       changeYear: true,
       yearRange: "-100:+0"
     });
-
-    $( ".datepicker" ).datepicker( "setDate" , today );
 });

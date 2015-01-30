@@ -1,10 +1,12 @@
 class PupilHour
   include MongoMapper::Document
 
-  key :day
-  key :month
-  key :year
-  belongs_to :pupil
+  key :date_class, Date,  required: true
+  key :time_class, Time,  required: true
+
+
+  belongs_to :training_class
+
 
 
   timestamps!

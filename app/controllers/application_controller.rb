@@ -7,5 +7,8 @@ class ApplicationController < ActionController::Base
     !current_trainer.nil?
   end
 
+  def get_aviable_pupils
+    Pupil.all.collect{|p| p.get_name}
+  end
 
 end
