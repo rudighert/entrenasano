@@ -1,28 +1,36 @@
-#wrapper
-  %h1 Mis Clases
-  -classes = current_trainer.get_classes
-  -if classes.empty?
-    %h1 No ha ingresado ningúna clase
-  -else
+%h1 Mis Clases
+-classes = current_trainer.get_classes
+-if classes.empty?
+  %h1 No ha ingresado ningúna clase
+-else
 
-    .row
-      .small-12
-        %table.total
-          %thead
+  .row
+    .small-12
+      %table.total
+        %thead
+          %tr
+            %th{width: "50%"} Integrantes
+            %th{width: "50%"} Acciones
+        %tbody
+          -classes.each do |c|
             %tr
-              %th{width: "50%"} Integrantes
-              %th{width: "50%"} Acciones
-          %tbody
-            -classes.each do |c|
-              %tr
-                %td
-                  -c.pupils.each do |p|
-                    .pupil_name=p.get_name
-                %td
-                  %a.add_hour_pupil{data: {"reveal-id" => "add_hour", class_id: c.id, }, :href => "#"}
-                    Agregar Hora
-                  %a{href: '#'}
-                    Editar Clase
+              %td
+                -c.pupils.each do |p|
+                  %h2.pupil_name=p.get_name
+                %h3.underline Últimas clases registradas:
+                %ul.list_last_hours
+                  -class_hours = class_hours c.pupil_hours
+                  -class_hours.each do |ph|
+                    %li.box_time
+                      .time
+                        =ph[:time]
+                      .date
+                        =ph[:date]
+              %td
+                %a.add_hour_pupil{data: {"reveal-id" => "add_hour", class_id: c.id, }, :href => "#"}
+                  %button.green.total Agregar Hora
+                %a{href: training_clas_path(c.id)}
+                  %button.blue.total Editar Clase
 
 
 
@@ -48,8 +56,6 @@
 
 
 :javascript
-  var today = "#{@today}";
-
 
   $(document).ready(function(){
     $('body').on('click', '.add_hour_pupil',function(){
@@ -58,5 +64,5 @@
       console.log(class_id)
       $('#_pupil_hour_training_class_id').val(class_id)
     })
-    $( ".datepicker" ).datepicker( "setDate" , today );
+    $( ".datepicker" ).datepicker( "setDate" , new Date() );
   })

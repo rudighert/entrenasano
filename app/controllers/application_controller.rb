@@ -11,4 +11,9 @@ class ApplicationController < ActionController::Base
     Pupil.all.collect{|p| p.get_name}
   end
 
+  def date_picker_to_mongo date
+    date = date.split('/')
+    return (Time.new(date[2].to_i,date[1].to_i,date[0].to_i).utc)
+  end
+
 end

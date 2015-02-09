@@ -1,0 +1,21 @@
+= simple_form_for @pupil_hour, url: pupil_hour_path(@pupil_hour), method: 'PUT' do |f|
+  =hidden_field_tag 'training_class', params[:training_class]
+  -hours =create_hours(start_time: 5.hours, end_time: 23.hours, increment: 15.minutes)
+  %input.datepicker.date_class{name:"[pupil_hour][date_class]", type: "text"}
+  =f.input :time_class, collection: hours, selected: format_hour(@pupil_hour.time_class)
+  = f.button :submit, class: 'total'
+
+:javascript
+  var year = "#{@pupil_hour.date_class.strftime('%Y')}"
+  var month = "#{@pupil_hour.date_class.strftime('%m')}"
+  var day = "#{@pupil_hour.date_class.strftime('%d')}"
+
+  $(document).ready(function(){
+
+    $('.datepicker.date_class').datepicker("setDate", new Date(year,validate_month(month),day));
+  })
+
+  function validate_month(month){
+    month = (parseInt(month) - 1) == -1 ? 11 : (parseInt(month)-1)
+    return month
+  }

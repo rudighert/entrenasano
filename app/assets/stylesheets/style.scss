@@ -7,12 +7,25 @@ body{
 h1{
   font-size: 25px;
 }
+h2{
+  font-size: 16px;
+}
+h3{
+  font-size: 12px;
+}
+.underline{
+  text-decoration: underline;
+}
 
 button, input[type="submit"]{
   @include border-radius(5px);
   &.green{
     color: white;
     background-color: #27ae60;
+  }
+  &.blue{
+    color: white;
+    background-color: #3498db;
   }
 }
 
@@ -48,4 +61,25 @@ button, input[type="submit"]{
 }
 .pupil_name{
   text-transform: capitalize;
+}
+
+.list_last_hours{
+  margin: 0;
+
+  .box_time{
+    font-size: 12px;
+    text-align: center;
+    width: 70px;
+    margin: 5px;
+    @include inline-block;
+    .time{
+      color: white;
+      background-color: #e74c3c;
+      @include border-radius(3px 3px 0 0);
+    }
+    .date{
+      background-color: #ecf0f1;
+      @include border-radius(0 0 3px 3px);
+    }
+  }
 }
